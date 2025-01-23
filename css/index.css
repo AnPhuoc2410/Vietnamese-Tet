@@ -190,55 +190,64 @@ body {
     left: 15%;
     transform: rotateY(180deg);
 }
+
 .options-menu {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
+    position: fixed; /* Fix it to the viewport */
+    top: 10px; /* Distance from the top */
+    right: 10px; /* Distance from the right */
+    z-index: 1000; /* Ensure it appears above other elements */
 }
 
 .options-button {
-    background-color: #a93132;
-    color: white;
-    border: none;
-    padding: 10px 40px;
-    border-radius: 5px;
-    font-family: 'Baloo Bhai', cursive;
-    cursor: pointer;
+    background-color: #a93132; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Spacing inside the button */
+    font-size: 16px; /* Font size */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease;
 }
 
+/* Change background color when hovering over the button */
 .options-button:hover {
-    background-color: #c4421f;
+    background-color: #f58888;
 }
 
+/* Style for the dropdown menu */
 .options-dropdown {
-    display: none;
-    position: absolute;
-    top: 40px;
-    right: 0;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1001;
+    display: none; /* Initially hidden */
+    position: absolute; /* Positioned relative to .options-menu */
+    top: 40px; /* Below the options button */
+    right: 0; /* Align with the right edge of the button */
+    background-color: white; /* White background */
+    border: 1px solid #ddd; /* Border around the menu */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    z-index: 1; /* Ensures the dropdown is above other elements */
 }
 
-.options-dropdown a {
-    display: block;
-    color: black;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-family: 'Baloo Bhai', cursive;
+/* Style for each option in the dropdown */
+.options-dropdown button {
+    background-color: white; /* White background for options */
+    color: black; /* Black text */
+    padding: 10px 20px; /* Padding inside each button */
+    width: 100%; /* Make the button fill the container */
+    border: none; /* Remove border */
+    text-align: left; /* Align text to the left */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease;
 }
 
-.options-dropdown a:hover {
-    background-color: #f0f0f0;
+/* Change background color when hovering over the options */
+.options-dropdown button:hover {
+    background-color: #f44747;
 }
 
-.options-menu:hover .options-dropdown {
-    display: block;
+/* Optional: active state for buttons (when clicked) */
+.options-dropdown button:active {
+    background-color: #ccc;
 }
-
 
 
 @media only screen and (max-width: 414px) {
