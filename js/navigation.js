@@ -19,8 +19,8 @@ document.getElementById('luckySpinOption').addEventListener('click', () => {
     window.location.href = 'luckySpin.html'; // Redirect to the Lucky Spin page
 });
 
-document.getElementById('newYearMessageOption').addEventListener('click', () => {
-    window.location.href = 'showMessage.html'; // Redirect to the New Year Message page
+document.getElementById('redEnvelope').addEventListener('click', () => {
+    window.location.href = 'envelope.html'; // Redirect to the New Year Message page
 });
 
 document.getElementById('settingsOption').addEventListener('click', () => {
