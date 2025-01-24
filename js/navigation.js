@@ -16,17 +16,17 @@ document.addEventListener('click', (event) => {
 
 // Option click handlers
 document.getElementById('luckySpinOption').addEventListener('click', () => {
-    window.location.href = 'luckySpin.html'; // Redirect to the Lucky Spin page
+    window.location.href = 'pages/luckySpin.html'; // Redirect to the Lucky Spin page
 });
 
 document.getElementById('redEnvelope').addEventListener('click', () => {
-    window.location.href = 'envelope.html'; // Redirect to the New Year Message page
+    window.location.href = 'pages/envelope.html'; // Redirect to the New Year Message page
 });
 
 document.getElementById('settingsOption').addEventListener('click', () => {
-    window.location.href = 'settings.html'; // Redirect to the Settings page
+    window.location.href = 'pages/settings.html'; // Redirect to the Settings page
 });
 
 document.getElementById('fireWork').addEventListener('click', () => {
-    window.location.href = 'fireWork.html'; // Redirect to the Fire Work page
+    window.location.href = 'pages/fireWork.html'; // Redirect to the Fire Work page
 });
