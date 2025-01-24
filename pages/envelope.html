@@ -1,38 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/envelope.css">
-    <title>Red Envelope Project</title>
+    <title>Vietnamese Tet Envelope</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fff4e6; /* Light peach background */
+            font-family: 'Arial', sans-serif;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 20px; /* Space between envelopes */
+        }
+
+        .envelope {
+            width: 250px;
+            height: 350px;
+            position: relative;
+            background-image: url('../imgs/red_envelope.png'); /* Replace with your envelope image */
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .envelope.open {
+            background-image: url('https://example.com/red-envelope-open.jpg'); /* Replace with your open envelope image */
+            transform: rotateX(-30deg);
+        }
+
+        .content {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            color: #880e4f;
+        }
+
+        .content img {
+            width: 120px;
+            height: auto;
+        }
+
+        .content p {
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #c2185b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ad1457;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="envelope" onclick="openEnvelope(0)">
-            <img src="https://png.pngtree.com/png-clipart/20220123/original/pngtree-red-envelope-png-image_7161391.png" alt="Envelope">
-            <div class="amount" id="amount-0"></div>
-        </div>
-        <div class="envelope" onclick="openEnvelope(1)">
-            <img src="https://png.pngtree.com/png-clipart/20220123/original/pngtree-red-envelope-png-image_7161391.png" alt="Envelope">
-            <div class="amount" id="amount-1"></div>
-        </div>
-        <div class="envelope" onclick="openEnvelope(2)">
-            <img src="https://png.pngtree.com/png-clipart/20220123/original/pngtree-red-envelope-png-image_7161391.png" alt="Envelope">
-            <div class="amount" id="amount-2"></div>
-        </div>
-        <div class="envelope" onclick="openEnvelope(3)">
-            <img src="https://png.pngtree.com/png-clipart/20220123/original/pngtree-red-envelope-png-image_7161391.png" alt="Envelope">
-            <div class="amount" id="amount-3"></div>
-        </div>
-        <div class="envelope" onclick="openEnvelope(4)">
-            <img src="https://png.pngtree.com/png-clipart/20220123/original/pngtree-red-envelope-png-image_7161391.png" alt="Envelope">
-            <div class="amount" id="amount-4"></div>
-        </div>
-        <div class="envelope" onclick="openEnvelope(5)">
-            <img src="https://png.pngtree.com/png-clipart/20220123/original/pngtree-red-envelope-png-image_7161391.png" alt="Envelope">
-            <div class="amount" id="amount-5"></div>
-        </div>
+    <div class="grid">
+        <div class="envelope" onclick="openEnvelope()" aria-label="Open the red envelope"></div>
+        <div class="envelope" onclick="openEnvelope()" aria-label="Open the red envelope"></div>
+        <div class="envelope" onclick="openEnvelope()" aria-label="Open the red envelope"></div>
+        <div class="envelope" onclick="openEnvelope()" aria-label="Open the red envelope"></div>
+        <div class="envelope" onclick="openEnvelope()" aria-label="Open the red envelope"></div>
+        <div class="envelope" onclick="openEnvelope()" aria-label="Open the red envelope"></div>
     </div>
-    <script src="../js/envelope.js"></script>
+    <div class="content">
+        <img src="https://example.com/money-image.jpg" alt="Money">
+        <p id="message">Chúc mừng năm mới! Chúc bạn một năm mới an khang thịnh vượng!</p>
+        <button onclick="resetEnvelope()">Open Another</button>
+    </div>
+
+    <script>
+        const messages = [
+            "Chúc mừng năm mới! Chúc bạn một năm mới an khang thịnh vượng!",
+            "Happy New Year! May you have a prosperous and joyful year ahead!",
+            "Wishing you health, happiness, and success in the new year!"
+        ];
+
+        function openEnvelope() {
+            document.querySelector('.envelope').classList.add('open');
+            document.querySelector('.content').style.display = 'block';
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('message').innerText = randomMessage;
+        }
+
+        function resetEnvelope() {
+            document.querySelectorAll('.envelope').forEach(env => env.classList.remove('open'));
+            document.querySelector('.content').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
