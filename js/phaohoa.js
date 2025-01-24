@@ -401,6 +401,10 @@ Object.keys(appNodes).forEach(key => {
 if (!fullscreenEnabled()) {
 	appNodes.fullscreenFormOption.classList.add('remove');
 }
+document.querySelector('.back-btn').addEventListener('click', () => {
+    window.history.back(); // Navigate to the previous page
+});
+
 
 // First render is called in init()
 function renderApp(state) {
