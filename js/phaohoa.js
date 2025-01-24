@@ -111,6 +111,7 @@ const store = {
 	
 	state: {
 		// will be unpaused in init()
+		backed:false,
 		paused: true,
 		soundEnabled: false,
 		menuOpen: false,
@@ -229,6 +230,19 @@ function togglePause(toggle) {
 
 	if (paused !== newValue) {
 		store.setState({ paused: newValue });
+	}
+}
+function toggleBack(toggle) {
+	const backed = store.state.backed;
+	let newValue;
+	if (typeof toggle === 'boolean') {
+		newValue = toggle;
+	} else {
+		newValue = !backed;
+	}
+
+	if (backed !== newValue) {
+		store.setState({ backed: newValue });
 	}
 }
 
@@ -357,6 +371,8 @@ const appNodes = {
 	controls: '.controls',
 	menu: '.menu',
 	menuInnerWrap: '.menu__inner-wrap',
+	backBtn: '.back-btn',
+	backBtnSVG: '.back-btn use',
 	pauseBtn: '.pause-btn',
 	pauseBtnSVG: '.pause-btn use',
 	soundBtn: '.sound-btn',
@@ -401,10 +417,6 @@ Object.keys(appNodes).forEach(key => {
 if (!fullscreenEnabled()) {
 	appNodes.fullscreenFormOption.classList.add('remove');
 }
-document.querySelector('.back-btn').addEventListener('click', () => {
-    window.history.back(); // Navigate to the previous page
-});
-
 
 // First render is called in init()
 function renderApp(state) {
