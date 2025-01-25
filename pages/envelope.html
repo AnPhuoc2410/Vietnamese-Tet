@@ -54,6 +54,7 @@
 <body>
   <audio id="clap" src="../audio/crowd_clap.mp3"></audio>
   <audio id="sad" src="../audio/Sad Meow.mp3"></audio>
+  <audio id="nit" src="../audio/Cai_Nit.mp3"></audio>
 
   <div class="container py-5">
     <h1 class="text-center mb-4">Lucky Money</h1>
@@ -147,13 +148,17 @@
       document.getElementById('modalImage').src = envelopeData.img;
       document.getElementById('modalMessage').innerText = envelopeData.message;
 
-      const highValueKeywords = ['500K', '200K', '100K'];
+      const highValueKeywords = ['500K', '200K', '100K', '50K', '20K', '10K'];
+      const isNit = envelopeData.message.includes('Nịt');
       const isHighValue = highValueKeywords.some(keyword => envelopeData.message.includes(keyword));
 
       if (isHighValue) {
-        document.getElementById('clap').play(); // Play "clap clap" for high value
-      } else {
-        document.getElementById('sad').play(); // Play "sad sound" for low value
+        document.getElementById('clap').play();
+      } else if (isNit) {
+        document.getElementById('nit').play();
+      }
+      else{
+        document.getElementById('sad').play();
       }
 
       const modal = new bootstrap.Modal(document.getElementById('envelopeModal'));
@@ -168,12 +173,15 @@
         img.src = envelope.img;
       });
     }
+    
     window.onload = () => {
       preloadImages();
       const clapSound = document.getElementById('clap');
       const sadSound = document.getElementById('sad');
+      const nitSound = document.getElementById('nit');
       clapSound.load();
       sadSound.load();
+      nitSound.load();
       generateEnvelopes();
     };
 
