@@ -193,7 +193,7 @@ body {
   position: absolute;
   width: 300px;
   height: 300px;
-  animation: moveSnake 12s linear infinite;
+  animation: moveSnake 11s linear infinite;
 }
 
 .snake img {
@@ -208,19 +208,19 @@ body {
     left: calc(10% - 200px);
   }
   25% {
-    top: calc(-5% - 200px);
+    top: calc(-15% - 200px);
     left: calc(65% + 250px);
   }
   50% {
     top: calc(-25% + 150px);
-    left: calc(65% + 150px);
+    left: calc(75% + 150px);
   }
   75% {
-    top: calc(25% + 120px);
+    top: calc(15% + 120px);
     left: calc(0% - 220px);
   }
   100% {
-    top: calc(-50% - 100px);
+    top: calc(-40% - 100px);
     left: calc(0% - 200px);
   }
 }
