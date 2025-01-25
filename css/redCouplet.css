@@ -1,0 +1,93 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+body {
+  background-image: url("../imgs/img-tet5.jpg");
+  background-size: cover;
+}
+
+.container {
+  width: 85%;
+  margin: 17% auto;
+}
+
+.h2 {
+  margin-bottom: 30px;
+  font-size: 70px;
+  font-family: "Shrikhand", cursive;
+  text-align: center;
+  line-height: 100%;
+  background: -webkit-linear-gradient(#232526, #414345);
+  background: -o-linear-gradient(#232526, #414345);
+  background: linear-gradient(#232526, #414345);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.description {
+  margin-bottom: 40px;
+  text-align: center;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 28px;
+}
+
+.number {
+  display: none;
+  text-align: center;
+  font-size: 50px;
+  font-family: "Anonymous Pro", san-serif;
+  color: #eb0707;
+}
+
+.numberShow {
+  display: block;
+}
+
+#info {
+  padding: 21px 10px;
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 20px;
+  background: -webkit-radial-gradient(#f0ebeb, #ffcb88);
+  background: -o-radial-gradient(#ffffff, #ffcb88);
+  background: radial-gradient(#ffffff, #ffcb88);
+  width: 8%;
+  margin: 0 auto;
+}
+
+.revealBtn {
+  padding: 10px 34px;
+  font-family: "Anton", sans-serif;
+  text-align: center;
+  letter-spacing: 5px;
+  font-size: 30px;
+  color: white;
+  border-radius: 10px;
+  border: 2px solid #6e0dd0;
+  box-shadow: 0px 0px 10px #142585;
+  background: -webkit-linear-gradient(#6441a5, #2a0845);
+}
+
+.revealBtn:hover {
+  cursor: pointer;
+}
+
+.revealBtn:focus {
+  outline: 0;
+}
+
+.revealBtn:active {
+  background: linear-gradient(#8657de, #4f0f82);
+  transform: translateY(3px);
+}
+
+.btnWrapper {
+  margin-top: 39px;
+  text-align: center;
+}
+
+/* For Random couplet */

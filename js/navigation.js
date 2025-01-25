@@ -16,8 +16,8 @@ document.addEventListener("click", (event) => {
 });
 
 // Option click handlers
-document.getElementById("luckySpinOption").addEventListener("click", () => {
-  window.location.href = "pages/luckySpin.html"; // Redirect to the Lucky Spin page
+document.getElementById("randomRedCouplet").addEventListener("click", () => {
+  window.location.href = "pages/randomRedCouplet.html"; // Redirect to the Lucky Spin page
 });
 
 document.getElementById("redEnvelope").addEventListener("click", () => {
