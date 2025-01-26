@@ -130,8 +130,10 @@ $(document).ready(function () {
   const pageLoadSound = document.getElementById("page-load-sound");
   const spinSound = document.getElementById("spin-sound");
   const popupSound = document.getElementById("popup-sound");
+  const backBtn = document.getElementById("back");
   let hasSpun = false;
 
+  // Play page load sound
   pageLoadSound.play();
 
   $("#reveal").click(function () {
@@ -139,23 +141,37 @@ $(document).ready(function () {
     hasSpun = true;
     $(this).prop("disabled", true);
     el.classList.add("shake");
+
+    // Play spin sound
     spinSound.play();
+
     setTimeout(() => {
       el.classList.remove("shake");
+
+      // Stop spin sound
       spinSound.pause();
       spinSound.currentTime = 0;
+
       randomIndex = Math.floor(Math.random() * quotes.length);
       const finalNumber = randomIndex + 1;
       el.innerHTML = '<p id="number" class="number">' + finalNumber + "</p>";
       popupNumber.textContent = "Số May Mắn: " + finalNumber;
       popupQuote.textContent = quotes[randomIndex].quote;
       popup.classList.remove("hidden");
+
+      // Play popup sound
       popupSound.play();
+
       $(this).prop("disabled", true);
     }, 5000);
   });
 
   closePopup.addEventListener("click", () => {
     popup.classList.add("hidden");
+  });
+
+  // Add event listener for back button
+  backBtn.addEventListener("click", () => {
+    window.history.back();
   });
 });
