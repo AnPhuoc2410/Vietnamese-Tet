@@ -1,13 +1,10 @@
-
 const optionsButton = document.querySelector(".options-button");
 const optionsDropdown = document.querySelector(".options-dropdown");
-
 
 optionsButton.addEventListener("click", () => {
   optionsDropdown.style.display =
     optionsDropdown.style.display === "block" ? "none" : "block";
 });
-
 
 document.addEventListener("click", (event) => {
   if (!event.target.closest(".options-menu")) {
@@ -16,8 +13,8 @@ document.addEventListener("click", (event) => {
 });
 
 // Option click handlers
-document.getElementById("luckySpinOption").addEventListener("click", () => {
-  window.location.href = "pages/luckySpin.html"; // Redirect to the Lucky Spin page
+document.getElementById("fortuneTelling").addEventListener("click", () => {
+  window.location.href = "pages/fortuneTelling.html"; // Redirect to the Fortune Telling page
 });
 
 document.getElementById("redEnvelope").addEventListener("click", () => {
