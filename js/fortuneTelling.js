@@ -127,22 +127,30 @@ $(document).ready(function () {
   const popupNumber = document.getElementById("popup-number");
   const popupQuote = document.getElementById("popup-quote");
   const closePopup = document.getElementById("close-popup");
+  const pageLoadSound = document.getElementById("page-load-sound");
+  const spinSound = document.getElementById("spin-sound");
+  const popupSound = document.getElementById("popup-sound");
   let hasSpun = false;
+
+  pageLoadSound.play();
+
   $("#reveal").click(function () {
     if (hasSpun) return;
     hasSpun = true;
     $(this).prop("disabled", true);
     el.classList.add("shake");
+    spinSound.play();
     setTimeout(() => {
       el.classList.remove("shake");
-
+      spinSound.pause();
+      spinSound.currentTime = 0;
       randomIndex = Math.floor(Math.random() * quotes.length);
       const finalNumber = randomIndex + 1;
       el.innerHTML = '<p id="number" class="number">' + finalNumber + "</p>";
       popupNumber.textContent = "Số May Mắn: " + finalNumber;
       popupQuote.textContent = quotes[randomIndex].quote;
       popup.classList.remove("hidden");
-
+      popupSound.play();
       $(this).prop("disabled", true);
     }, 5000);
   });
