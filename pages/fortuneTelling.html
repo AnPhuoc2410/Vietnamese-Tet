@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Shrikhand"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Anonymous+Pro"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Condensed"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Anton"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../css/fortuneTelling.css" />
+    <title>Gieo Quẻ Đầu Năm</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="h2">Gieo Quẻ Đầu Năm</h2>
+      <p class="description">Quẻ May Mắn Của Bạn Là....</p>
+      <div id="info" class="que"></div>
+      <form class="btnWrapper">
+        <input type="button" class="revealBtn" id="reveal" value="ẤN" />
+      </form>
+    </div>
+
+    <div id="popup" class="popup hidden">
+      <div class="popup-content">
+        <span class="close-btn" id="close-popup">&times;</span>
+        <h3>Xin Hãy Đón Nhận</h3>
+        <p id="popup-number"></p>
+        <p id="popup-quote"></p>
+      </div>
+    </div>
+
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"
+    ></script>
+    <script src="../js/fortuneTelling.js"></script>
+  </body>
+</html>
