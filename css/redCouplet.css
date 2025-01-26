@@ -48,17 +48,35 @@ body {
 }
 
 #info {
-  padding: 21px 10px;
-  height: 100px;
-  border: 1px solid black;
-  border-radius: 20px;
-  background: -webkit-radial-gradient(#f0ebeb, #ffcb88);
-  background: -o-radial-gradient(#ffffff, #ffcb88);
-  background: radial-gradient(#ffffff, #ffcb88);
-  width: 8%;
+  padding: 21px 20px;
+  height: 300px;
+  background-image: url("../imgs/que.png");
+  background-size: cover;
+  width: 20%;
   margin: 0 auto;
+  object-fit: cover;
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
+#info.shake {
+  animation: shake 0.3s infinite;
+}
 .revealBtn {
   padding: 10px 34px;
   font-family: "Anton", sans-serif;
@@ -90,80 +108,57 @@ body {
   text-align: center;
 }
 
-/* For Random couplet */
-app {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f0f2f5;
+.revealBtn:hover {
+  background-color: #6a1b9a;
 }
 
-.input-container {
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 400px;
-  text-align: center;
+.revealBtn:disabled {
+  background-color: #9e9e9e;
+  cursor: not-allowed;
 }
 
-.quote-popup {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-  width: 90%;
-  max-width: 500px;
-  animation: popIn 0.3s ease-out;
-}
-
-@keyframes popIn {
-  0% {
-    transform: translate(-50%, -50%) scale(0.5);
-    opacity: 0;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-}
-
-.overlay {
-  display: none;
+.popup {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-#quote {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+.popup.hidden {
+  display: none;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  position: relative;
+  max-width: 400px;
+  width: 90%;
 }
 
 .close-btn {
   position: absolute;
   top: 10px;
-  right: 10px;
-  border: none;
-  background: none;
-  font-size: 1.5rem;
+  right: 15px;
+  font-size: 24px;
   cursor: pointer;
   color: #666;
 }
 
-#quoteNumber {
-  width: 150px;
-  margin: 0 auto 1rem auto;
+#popup-number {
+  font-size: 1.5em;
+  color: #d4af37;
+  margin-bottom: 15px;
+}
+
+#popup-quote {
+  font-size: 1.2em;
+  color: #333;
 }

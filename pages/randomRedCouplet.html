@@ -29,35 +29,20 @@
   <body>
     <div class="container">
       <h2 class="h2">Random Your Lucky Number</h2>
-
       <p class="description">Your lucky number is...</p>
-
-      <div id="info"></div>
-
+      <div id="info" class="que"></div>
       <form class="btnWrapper">
         <input type="button" class="revealBtn" id="reveal" value="SPIN" />
       </form>
-      <main class="app">
-        <div class="overlay" id="overlay"></div>
+    </div>
 
-        <div class="input-container">
-          <input
-            type="number"
-            id="quoteNumber"
-            class="form-control"
-            placeholder="Nhập số"
-            min="1"
-          />
-          <button class="btn btn-info" id="generate">Hiện quote</button>
-        </div>
-
-        <div class="quote-popup" id="quotePopup">
-          <button class="close-btn" id="closeBtn">&times;</button>
-          <div class="inner-quotes-container">
-            <p id="quote"></p>
-          </div>
-        </div>
-      </main>
+    <div id="popup" class="popup hidden">
+      <div class="popup-content">
+        <span class="close-btn" id="close-popup">&times;</span>
+        <h3>Your Lucky Number</h3>
+        <p id="popup-number"></p>
+        <p id="popup-quote"></p>
+      </div>
     </div>
 
     <script
