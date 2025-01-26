@@ -28,7 +28,7 @@ function generateEnvelopes() {
 
   shuffledEnvelopes.forEach((envelope, index) => {
     const col = document.createElement('div');
-    col.className = 'col-md-4 col-lg-2';
+    col.className = 'col-md-4 col-lg-4';
 
     col.innerHTML = `
       <div class="envelope-card text-center" id="envelope-${index}">

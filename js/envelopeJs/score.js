@@ -1,11 +1,14 @@
 const API_BASE_URL = "https://114a8708-e189-4e40-be62-f8e4db9ea3e2-00-dwf2ql6e9ran.pike.replit.dev"; // Change this to your API server
+const ITEMS_PER_PAGE = 5; // Number of items per page
+let currentPage = 1;
+let scores = [];
 
 // Fetch all scores
 async function getScores() {
   try {
     const response = await fetch(`${API_BASE_URL}/scores`);
-    const scores = await response.json();
-    updateScoreboard(scores); // Update the scoreboard table
+    scores = await response.json();
+    updateScoreboard(); // Update the scoreboard table
   } catch (error) {
     console.error("Failed to fetch scores:", error);
   }
@@ -24,7 +27,8 @@ async function addScore(userName, reward) {
 
     if (response.ok) {
       const newScore = await response.json();
-      appendScoreToScoreboard(newScore); // Add the new score to the scoreboard table
+      scores.push(newScore);
+      updateScoreboard(); // Add the new score to the scoreboard table
     }
   } catch (error) {
     console.error("Failed to add score:", error);
@@ -39,21 +43,27 @@ async function clearScores() {
     });
 
     // Clear the scoreboard table in the UI
-    const scoreboardBody = document.querySelector("#scoreboard tbody");
-    scoreboardBody.innerHTML = "";
+    scores = [];
+    updateScoreboard();
   } catch (error) {
     console.error("Failed to clear scores:", error);
   }
 }
 
 // Update the scoreboard table
-function updateScoreboard(scores) {
+function updateScoreboard() {
   const scoreboardBody = document.querySelector("#scoreboard tbody");
   scoreboardBody.innerHTML = ""; // Clear existing rows
 
-  scores.forEach((score) => {
+  const start = (currentPage - 1) * ITEMS_PER_PAGE;
+  const end = start + ITEMS_PER_PAGE;
+  const paginatedScores = scores.slice(start, end);
+
+  paginatedScores.forEach((score) => {
     appendScoreToScoreboard(score);
   });
+
+  updatePagination();
 }
 
 // Append a single score to the scoreboard table
@@ -80,6 +90,49 @@ function formatReward(reward) {
     return 'Nit';
   }
   return reward.toString();
+}
+
+// Update pagination controls
+function updatePagination() {
+  const pagination = document.getElementById("pagination");
+  pagination.innerHTML = "";
+
+  const totalPages = Math.ceil(scores.length / ITEMS_PER_PAGE);
+
+  const prevButton = document.createElement("button");
+  prevButton.textContent = "Previous";
+  prevButton.disabled = currentPage === 1;
+  prevButton.classList.toggle("disabled", currentPage === 1);
+  prevButton.onclick = () => {
+    if (currentPage > 1) {
+      currentPage--;
+      updateScoreboard();
+    }
+  };
+  pagination.appendChild(prevButton);
+
+  for (let i = 1; i <= totalPages; i++) {
+    const pageButton = document.createElement("button");
+    pageButton.textContent = i;
+    pageButton.classList.toggle("disabled", i === currentPage);
+    pageButton.onclick = () => {
+      currentPage = i;
+      updateScoreboard();
+    };
+    pagination.appendChild(pageButton);
+  }
+
+  const nextButton = document.createElement("button");
+  nextButton.textContent = "Next";
+  nextButton.disabled = currentPage === totalPages;
+  nextButton.classList.toggle("disabled", currentPage === totalPages);
+  nextButton.onclick = () => {
+    if (currentPage < totalPages) {
+      currentPage++;
+      updateScoreboard();
+    }
+  };
+  pagination.appendChild(nextButton);
 }
 
 // Initialize the scoreboard on page load

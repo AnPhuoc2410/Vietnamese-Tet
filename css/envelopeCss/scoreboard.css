@@ -1,11 +1,13 @@
 .scoreboard-container {
-    margin: 30px auto;
-    max-width: 600px;
+    margin: 30px;
+    max-width: 300px;
     text-align: center;
     background-color: #ffffff;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+    height: 400px;
 }
 
 .scoreboard-table {
@@ -21,7 +23,7 @@
 }
 
 .scoreboard-table th {
-    background-color: #4caf50;
+    background-color: #e63946;
     color: white;
 }
 
@@ -31,4 +33,25 @@
 
 .scoreboard-table tr:hover {
     background-color: #ddd;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.pagination button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #e63946;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.pagination button.disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
 }
