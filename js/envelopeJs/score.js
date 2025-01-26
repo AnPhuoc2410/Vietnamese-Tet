@@ -76,6 +76,8 @@ function appendScoreToScoreboard(score) {
 function formatReward(reward) {
   if (reward >= 1000) {
     return `${reward / 1000}K`;
+  }else if(reward == 0){
+    return 'Nit';
   }
   return reward.toString();
 }
@@ -89,10 +91,8 @@ document.addEventListener("DOMContentLoaded", () => {
   scoreForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     const userName = document.getElementById("userName").value;
-    const modalMessage = document.getElementById("modalMessage").textContent;
-    const rewardMatch = modalMessage.match(/You Found (\d+K)/);
-    const reward = rewardMatch ? parseInt(rewardMatch[1]) * 1000 : 0; // Convert "100K" to 100000
-    await addScore(userName, reward);
+    const reward = document.getElementById("modalMessage").getAttribute('data-reward');
+    await addScore(userName, parseInt(reward));
     scoreForm.reset(); // Clear the form
   });
 });
