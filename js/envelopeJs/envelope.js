@@ -28,11 +28,11 @@ function generateEnvelopes() {
 
   shuffledEnvelopes.forEach((envelope, index) => {
     const col = document.createElement('div');
-    col.className = 'col-md-4 col-lg-4';
+    col.className = 'col-md-4 col-lg-4 d-flex justify-content-center';
 
     col.innerHTML = `
       <div class="envelope-card text-center" id="envelope-${index}">
-        <img src="../imgs/red_envelope.png" alt="Envelope ${index + 1}" onclick="openEnvelope(${index})">
+        <img src="../imgs/red_envelope.png" alt="Envelope ${index + 1}" class="envelope-img" onclick="openEnvelope(${index})">
       </div>
     `;
     container.appendChild(col);
@@ -50,33 +50,54 @@ function disableEnvelopes() {
 }
 
 let envelopeOpened = false;
+
 function openEnvelope(index) {
   if (envelopeOpened) return;
   envelopeOpened = true;
 
-  const envelopeData = window.shuffledEnvelopes[index];
-  const envelopeElement = document.getElementById(`envelope-${index}`).querySelector('img');
+  const shuffledEnvelopes = window.shuffledEnvelopes || [];
+  const envelopeData = shuffledEnvelopes[index];
+  if (!envelopeData) {
+    console.error('Envelope data not found!');
+    return;
+  }
 
-  envelopeElement.src = envelopeData.img;
+  const envelopeElement = document.getElementById(`envelope-${index}`)?.querySelector('img');
+  if (envelopeElement) {
+    envelopeElement.src = envelopeData.img;
+  }
 
-  document.getElementById('modalImage').src = envelopeData.img;
-
+  const modalImage = document.getElementById('modalImage');
   const messageElement = document.getElementById('modalMessage');
-  messageElement.innerText = envelopeData.message;
-  messageElement.classList.add('animated-message');
-  messageElement.setAttribute('data-reward', envelopeData.reward); // Correctly set the reward attribute
-  if (envelopeData.audio.includes('crowd_clap')) {
+  if (modalImage && messageElement) {
+    modalImage.src = envelopeData.img;
+    messageElement.innerText = envelopeData.message;
+    messageElement.classList.add('animated-message');
+    messageElement.setAttribute('data-reward', envelopeData.reward || 'N/A');
+  }
+
+  if (envelopeData.audio?.includes('crowd_clap')) {
     triggerConfetti();
   }
 
-  const audio = new Audio(envelopeData.audio);
-  audio.play();
+  if (envelopeData.audio) {
+    const audio = new Audio(envelopeData.audio);
+    audio.play().catch((err) => console.error('Audio playback failed:', err));
+  }
 
   const modal = new bootstrap.Modal(document.getElementById('envelopeModal'));
   modal.show();
 
   disableEnvelopes();
 }
+
+function disableEnvelopes() {
+  const envelopeButtons = document.querySelectorAll('.envelope');
+  envelopeButtons.forEach((button) => {
+    button.setAttribute('disabled', 'true');
+  });
+}
+
 
 function preloadImages() {
   envelopes.forEach(envelope => {

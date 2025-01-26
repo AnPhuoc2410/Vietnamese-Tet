@@ -1,57 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 .scoreboard-container {
-    margin: 30px;
-    max-width: 300px;
+    margin: 20px auto;
+    max-width: 100%;
     text-align: center;
-    background-color: #ffffff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    flex-shrink: 0;
-    height: 400px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    height: auto;
+    overflow-x: auto;
+    font-family: 'Poppins', sans-serif;
+}
+
+.scoreboard-container h3 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #e63946;
+    text-transform: uppercase;
+    line-height: 1.2;
+    word-wrap: break-word;
 }
 
 .scoreboard-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    background-color: #fff;
 }
 
 .scoreboard-table th,
 .scoreboard-table td {
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ddd;
+    text-align: center;
+    font-size: 0.9rem;
 }
 
 .scoreboard-table th {
     background-color: #e63946;
-    color: white;
+    color: #fff;
+    font-size: 1rem;
 }
 
 .scoreboard-table tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #f4f4f4;
 }
 
 .scoreboard-table tr:hover {
-    background-color: #ddd;
+    background-color: #f0e6e6;
+    cursor: pointer;
 }
 
 .pagination {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
 }
 
 .pagination button {
-    margin: 0 5px;
-    padding: 5px 10px;
+    padding: 8px 15px;
     border: none;
     background-color: #e63946;
-    color: white;
+    color: #fff;
+    font-size: 0.9rem;
     cursor: pointer;
     border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.pagination button:hover:not(.disabled) {
+    background-color: #d62839;
 }
 
 .pagination button.disabled {
-    background-color: #ddd;
+    background-color: #ccc;
     cursor: not-allowed;
+}
+
+@media (max-width: 992px) {
+    .scoreboard-container h3 {
+        font-size: 1.15rem;
+    }
+}
+
+
+@media (max-width: 767px) {
+    .scoreboard-container {
+        margin: 10px;
+        padding: 15px;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .scoreboard-container h3 {
+        font-size: 1.5rem;
+    }
+
+    .scoreboard-table th,
+    .scoreboard-table td {
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+
+    .pagination button {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .scoreboard-container h3 {
+        font-size: 1.25rem;
+    }
 }

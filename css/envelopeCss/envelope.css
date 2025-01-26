@@ -1,45 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Poppins:wght@400;600&display=swap');
+
 body {
     background-image: url('../../imgs/img-tet5.jpg');
-    font-family: Arial, sans-serif;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Dancing Script', cursive;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
 
 .envelope-card {
     border: none;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    background-color: #fff;
+    padding: 15px;
+    margin: 15px auto;
+    max-width: 220px; /* Slightly larger for a better look */
+    text-align: center;
 }
 
 .envelope-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
-.envelope-card img {
+.envelope-img {
     max-width: 100%;
     height: auto;
+    border-radius: 8px;
+    transition: transform 0.4s ease;
 }
 
-.envelope-card img {
-    transition: transform 0.3s ease-in-out;
-}
-
-.envelope-card img:hover {
-    transform: scale(1.1);
+.envelope-img:hover {
+    transform: scale(1.1) rotate(3deg);
 }
 
 .modal-body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
 }
 
 .modal-body img {
-    max-height: 200px;
+    max-height: 220px;
+    margin-bottom: 20px;
 }
 
+.modal-body p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #333;
+}
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 400px;
+    margin: 0 auto;
+  }
+  
+  .money-image-container {
+    margin-bottom: 15px;
+  }
+  
+  .money-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .reward-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .score-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .form-label {
+    font-size: 1em;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .form-input {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  .submit-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+
+/* Animated Message */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -53,10 +140,13 @@ body {
 }
 
 .animated-message {
-    animation: fadeIn 0.5s ease-out;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ff4d4d;
+    animation: fadeIn 0.6s ease-out;
+    font-size: 2rem;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+    color: #e63946;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
 }
 
 .confetti-canvas {
@@ -67,4 +157,33 @@ body {
     height: 100%;
     pointer-events: none;
     z-index: 9999;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .envelope-card {
+        max-width: 180px;
+    }
+
+    .modal-body img {
+        max-height: 180px;
+    }
+
+    .animated-message {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .envelope-card {
+        max-width: 150px;
+    }
+
+    .modal-body img {
+        max-height: 150px;
+    }
+
+    .animated-message {
+        font-size: 1.2rem;
+    }
 }
