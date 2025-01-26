@@ -19,6 +19,10 @@
       href="https://fonts.googleapis.com/css?family=Anton"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
     <link rel="stylesheet" href="../css/redCouplet.css" />
     <title>Random Lucky Rate</title>
   </head>
@@ -33,6 +37,27 @@
       <form class="btnWrapper">
         <input type="button" class="revealBtn" id="reveal" value="SPIN" />
       </form>
+      <main class="app">
+        <div class="overlay" id="overlay"></div>
+
+        <div class="input-container">
+          <input
+            type="number"
+            id="quoteNumber"
+            class="form-control"
+            placeholder="Nhập số"
+            min="1"
+          />
+          <button class="btn btn-info" id="generate">Hiện quote</button>
+        </div>
+
+        <div class="quote-popup" id="quotePopup">
+          <button class="close-btn" id="closeBtn">&times;</button>
+          <div class="inner-quotes-container">
+            <p id="quote"></p>
+          </div>
+        </div>
+      </main>
     </div>
 
     <script
