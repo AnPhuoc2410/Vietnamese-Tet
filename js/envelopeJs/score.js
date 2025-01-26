@@ -1,20 +1,20 @@
 const API_BASE_URL = "https://azure-ambiguous-fairy.glitch.me";
-const ITEMS_PER_PAGE = 5; // Number of items per page
+const ITEMS_PER_PAGE = 5;
 let currentPage = 1;
 let scores = [];
 
-// Fetch all scores
+
 async function getScores() {
   try {
     const response = await fetch(`${API_BASE_URL}/scores`);
     scores = await response.json();
-    updateScoreboard(); // Update the scoreboard table
+    updateScoreboard();
   } catch (error) {
     console.error("Failed to fetch scores:", error);
   }
 }
 
-// Add a new score
+
 async function addScore(userName, reward) {
   try {
     const response = await fetch(`${API_BASE_URL}/scores`, {
@@ -28,21 +28,20 @@ async function addScore(userName, reward) {
     if (response.ok) {
       const newScore = await response.json();
       scores.push(newScore);
-      updateScoreboard(); // Add the new score to the scoreboard table
+      updateScoreboard(); 
     }
   } catch (error) {
     console.error("Failed to add score:", error);
   }
 }
 
-// Clear all scores
+
 async function clearScores() {
   try {
     await fetch(`${API_BASE_URL}/scores`, {
       method: "DELETE",
     });
 
-    // Clear the scoreboard table in the UI
     scores = [];
     updateScoreboard();
   } catch (error) {
@@ -50,7 +49,6 @@ async function clearScores() {
   }
 }
 
-// Update the scoreboard table
 function updateScoreboard() {
   const scoreboardBody = document.querySelector("#scoreboard tbody");
   scoreboardBody.innerHTML = ""; // Clear existing rows
@@ -66,7 +64,6 @@ function updateScoreboard() {
   updatePagination();
 }
 
-// Append a single score to the scoreboard table
 function appendScoreToScoreboard(score) {
   const scoreboardBody = document.querySelector("#scoreboard tbody");
   const row = document.createElement("tr");
@@ -82,7 +79,6 @@ function appendScoreToScoreboard(score) {
   scoreboardBody.appendChild(row);
 }
 
-// Format reward value
 function formatReward(reward) {
   if (reward >= 1000) {
     return `${reward / 1000}K`;
@@ -92,7 +88,6 @@ function formatReward(reward) {
   return reward.toString();
 }
 
-// Update pagination controls
 function updatePagination() {
   const pagination = document.getElementById("pagination");
   pagination.innerHTML = "";
@@ -111,11 +106,9 @@ function updatePagination() {
   }
 }
 
-// Initialize the scoreboard on page load
 document.addEventListener("DOMContentLoaded", () => {
-  getScores(); // Fetch and display existing scores
+  getScores(); 
 
-  // Handle form submission
   const scoreForm = document.getElementById("scoreForm");
   scoreForm.addEventListener("submit", async (event) => {
     event.preventDefault();
