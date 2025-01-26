@@ -8,6 +8,7 @@
   <link rel="icon" type="image/png" href="../imgs/snake_logo.png" />
   <title>Red Envelopes</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
   <link rel="stylesheet" href="../css/envelopeCss/envelope.css">
   <link rel="stylesheet" href="../css/envelopeCss/scoreboard.css">
 </head>
@@ -17,29 +18,34 @@
   <audio id="sad" src="../audio/Sad Meow.mp3"></audio>
   <audio id="nit" src="../audio/Cai_Nit.mp3"></audio>
 
-  <div class="container-fluid d-flex">
-    <div id="scoreboardContainer" class="scoreboard-container">
-      <h3>Scoreboard</h3>
-      <table id="scoreboard" class="scoreboard-table">
-        <thead>
-          <tr>
-            <th>User Name</th>
-            <th>Reward</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Scoreboard rows will be dynamically added here -->
-        </tbody>
-      </table>
-      <div id="pagination" class="pagination">
-        <!-- Pagination controls will be dynamically added here -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-9 col-12">
+        <div class="container py-5">
+          <h1 class="text-center mb-4">Lucky Money</h1>
+          <div id="envelopeContainer" class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Envelopes will be dynamically added here -->
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="container py-5 flex-grow-1">
-      <h1 class="text-center mb-4">Lucky Money</h1>
-      <div id="envelopeContainer" class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
-        <!-- Envelopes will be dynamically added here -->
+      <div class="col-md-3 col-12">
+        <div id="scoreboardContainer" class="scoreboard-container">
+          <h3>Scoreboard</h3>
+          <table id="scoreboard" class="scoreboard-table">
+            <thead>
+              <tr>
+                <th>User Name</th>
+                <th>Reward</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Scoreboard rows will be dynamically added here -->
+            </tbody>
+          </table>
+          <div id="pagination" class="pagination">
+            <!-- Pagination controls will be dynamically added here -->
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -52,7 +58,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body text-center">
-          <img id="modalImage" src="" alt="Money Image" class="img-fluid rounded mb-3">
+          <img id="modalImage" src="" alt="Money Image" class="img-fluid mb-3">
           <p id="modalMessage"></p>
           <form id="scoreForm">
             <div class="mb-3">

@@ -1,47 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Poppins:wght@400;600&display=swap');
+
 body {
     background-image: url('../../imgs/img-tet5.jpg');
-    font-family: Arial, sans-serif;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Dancing Script', cursive;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
 
 .envelope-card {
     border: none;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     background-color: #fff;
-    padding: 10px;
-    margin-bottom: 20px;
-    width: 100%;
-    max-width: 200px; /* Adjust the max-width as needed */
+    padding: 15px;
+    margin: 15px auto;
+    max-width: 220px; /* Slightly larger for a better look */
+    text-align: center;
 }
 
 .envelope-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 
 .envelope-img {
     max-width: 100%;
     height: auto;
-    transition: transform 0.3s ease-in-out;
+    border-radius: 8px;
+    transition: transform 0.4s ease;
 }
 
 .envelope-img:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(3deg);
 }
 
 .modal-body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
 }
 
 .modal-body img {
-    max-height: 200px;
+    max-height: 220px;
+    margin-bottom: 20px;
 }
 
+.modal-body p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Animated Message */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -55,10 +76,13 @@ body {
 }
 
 .animated-message {
-    animation: fadeIn 0.5s ease-out;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ff4d4d;
+    animation: fadeIn 0.6s ease-out;
+    font-size: 2rem;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+    color: #e63946;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
 }
 
 .confetti-canvas {
@@ -71,9 +95,31 @@ body {
     z-index: 9999;
 }
 
-/* Media queries for responsive design */
-@media (max-width: 767px) {
+/* Responsive Design */
+@media (max-width: 991px) {
     .envelope-card {
-        max-width: 150px; /* Adjust the max-width for smaller screens */
+        max-width: 180px;
+    }
+
+    .modal-body img {
+        max-height: 180px;
+    }
+
+    .animated-message {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .envelope-card {
+        max-width: 150px;
+    }
+
+    .modal-body img {
+        max-height: 150px;
+    }
+
+    .animated-message {
+        font-size: 1.2rem;
     }
 }

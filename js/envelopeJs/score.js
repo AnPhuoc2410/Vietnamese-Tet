@@ -86,7 +86,7 @@ function appendScoreToScoreboard(score) {
 function formatReward(reward) {
   if (reward >= 1000) {
     return `${reward / 1000}K`;
-  } else if (reward == 0) {
+  }else if(reward == 0){
     return 'Nit';
   }
   return reward.toString();
@@ -99,18 +99,6 @@ function updatePagination() {
 
   const totalPages = Math.ceil(scores.length / ITEMS_PER_PAGE);
 
-  const prevButton = document.createElement("button");
-  prevButton.textContent = "Previous";
-  prevButton.disabled = currentPage === 1;
-  prevButton.classList.toggle("disabled", currentPage === 1);
-  prevButton.onclick = () => {
-    if (currentPage > 1) {
-      currentPage--;
-      updateScoreboard();
-    }
-  };
-  pagination.appendChild(prevButton);
-
   for (let i = 1; i <= totalPages; i++) {
     const pageButton = document.createElement("button");
     pageButton.textContent = i;
@@ -121,20 +109,9 @@ function updatePagination() {
     };
     pagination.appendChild(pageButton);
   }
-
-  const nextButton = document.createElement("button");
-  nextButton.textContent = "Next";
-  nextButton.disabled = currentPage === totalPages;
-  nextButton.classList.toggle("disabled", currentPage === totalPages);
-  nextButton.onclick = () => {
-    if (currentPage < totalPages) {
-      currentPage++;
-      updateScoreboard();
-    }
-  };
-  pagination.appendChild(nextButton);
 }
 
+// Initialize the scoreboard on page load
 document.addEventListener("DOMContentLoaded", () => {
   getScores(); // Fetch and display existing scores
 
@@ -144,12 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
     const userName = document.getElementById("userName").value;
     const reward = document.getElementById("modalMessage").getAttribute('data-reward');
-
     await addScore(userName, parseInt(reward));
     scoreForm.reset(); // Clear the form
-
-    // Close the modal
-    const envelopeModal = bootstrap.Modal.getInstance(document.getElementById('envelopeModal'));
-    envelopeModal.hide();
   });
 });
