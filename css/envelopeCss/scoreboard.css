@@ -1,6 +1,6 @@
 .scoreboard-container {
     margin: 30px;
-    max-width: 300px;
+    max-width: 100%;
     text-align: center;
     background-color: #ffffff;
     padding: 15px;
@@ -8,7 +8,6 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     flex-shrink: 0;
     height: 400px;
-}
 
 .scoreboard-table {
     width: 100%;
@@ -54,4 +53,23 @@
 .pagination button.disabled {
     background-color: #ddd;
     cursor: not-allowed;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 767px) {
+    .scoreboard-container {
+        margin: 15px;
+        padding: 10px;
+        box-shadow: none;
+    }
+
+    .scoreboard-table th,
+    .scoreboard-table td {
+        padding: 5px;
+    }
+
+    .pagination button {
+        padding: 3px 5px;
+        margin: 0 2px;
+    }
 }

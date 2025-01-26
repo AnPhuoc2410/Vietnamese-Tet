@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://114a8708-e189-4e40-be62-f8e4db9ea3e2-00-dwf2ql6e9ran.pike.replit.dev"; // Change this to your API server
+const API_BASE_URL = "https://azure-ambiguous-fairy.glitch.me";
 const ITEMS_PER_PAGE = 5; // Number of items per page
 let currentPage = 1;
 let scores = [];
@@ -86,7 +86,7 @@ function appendScoreToScoreboard(score) {
 function formatReward(reward) {
   if (reward >= 1000) {
     return `${reward / 1000}K`;
-  }else if(reward == 0){
+  } else if (reward == 0) {
     return 'Nit';
   }
   return reward.toString();
@@ -135,7 +135,6 @@ function updatePagination() {
   pagination.appendChild(nextButton);
 }
 
-// Initialize the scoreboard on page load
 document.addEventListener("DOMContentLoaded", () => {
   getScores(); // Fetch and display existing scores
 
@@ -145,7 +144,12 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
     const userName = document.getElementById("userName").value;
     const reward = document.getElementById("modalMessage").getAttribute('data-reward');
+
     await addScore(userName, parseInt(reward));
     scoreForm.reset(); // Clear the form
+
+    // Close the modal
+    const envelopeModal = bootstrap.Modal.getInstance(document.getElementById('envelopeModal'));
+    envelopeModal.hide();
   });
 });

@@ -10,6 +10,11 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     cursor: pointer;
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 200px; /* Adjust the max-width as needed */
 }
 
 .envelope-card:hover {
@@ -17,16 +22,13 @@ body {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.envelope-card img {
+.envelope-img {
     max-width: 100%;
     height: auto;
-}
-
-.envelope-card img {
     transition: transform 0.3s ease-in-out;
 }
 
-.envelope-card img:hover {
+.envelope-img:hover {
     transform: scale(1.1);
 }
 
@@ -67,4 +69,11 @@ body {
     height: 100%;
     pointer-events: none;
     z-index: 9999;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 767px) {
+    .envelope-card {
+        max-width: 150px; /* Adjust the max-width for smaller screens */
+    }
 }

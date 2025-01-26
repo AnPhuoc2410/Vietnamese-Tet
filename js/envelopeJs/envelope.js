@@ -28,11 +28,11 @@ function generateEnvelopes() {
 
   shuffledEnvelopes.forEach((envelope, index) => {
     const col = document.createElement('div');
-    col.className = 'col-md-4 col-lg-4';
+    col.className = 'col-md-4 col-lg-4 d-flex justify-content-center';
 
     col.innerHTML = `
       <div class="envelope-card text-center" id="envelope-${index}">
-        <img src="../imgs/red_envelope.png" alt="Envelope ${index + 1}" onclick="openEnvelope(${index})">
+        <img src="../imgs/red_envelope.png" alt="Envelope ${index + 1}" class="envelope-img" onclick="openEnvelope(${index})">
       </div>
     `;
     container.appendChild(col);
