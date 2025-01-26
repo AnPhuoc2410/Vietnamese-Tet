@@ -26,6 +26,7 @@ body {
   background: linear-gradient(#232526, #414345);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
 }
 
 .description {

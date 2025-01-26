@@ -139,7 +139,7 @@ $(document).ready(function () {
       randomIndex = Math.floor(Math.random() * quotes.length);
       const finalNumber = randomIndex + 1;
       el.innerHTML = '<p id="number" class="number">' + finalNumber + "</p>";
-      popupNumber.textContent = "Your number is: " + finalNumber;
+      popupNumber.textContent = "Số May Mắn: " + finalNumber;
       popupQuote.textContent = quotes[randomIndex].quote;
       popup.classList.remove("hidden");
 
