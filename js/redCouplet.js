@@ -121,31 +121,29 @@ $(document).ready(function () {
       quote: "Kinh doanh thuận lợi, khách hàng đông.",
     },
   ];
-
   let randomIndex;
   const el = document.getElementById("info");
   const popup = document.getElementById("popup");
   const popupNumber = document.getElementById("popup-number");
   const popupQuote = document.getElementById("popup-quote");
   const closePopup = document.getElementById("close-popup");
-
+  let hasSpun = false;
   $("#reveal").click(function () {
+    if (hasSpun) return;
+    hasSpun = true;
     $(this).prop("disabled", true);
-
     el.classList.add("shake");
-
     setTimeout(() => {
       el.classList.remove("shake");
 
       randomIndex = Math.floor(Math.random() * quotes.length);
       const finalNumber = randomIndex + 1;
       el.innerHTML = '<p id="number" class="number">' + finalNumber + "</p>";
-
       popupNumber.textContent = "Your number is: " + finalNumber;
       popupQuote.textContent = quotes[randomIndex].quote;
       popup.classList.remove("hidden");
 
-      $("#reveal").prop("disabled", false);
+      $(this).prop("disabled", true);
     }, 5000);
   });
 
