@@ -1,110 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="../imgs/snake_logo.png" />
+    <link rel="icon" type="image/png" href="../imgs/snake_logo.png" />
+    <title>Lì xì nè</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    />
+    <link rel="stylesheet" href="../css/envelopeCss/envelope.css" />
+    <link rel="stylesheet" href="../css/envelopeCss/scoreboard.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" type="image/png" href="../imgs/snake_logo.png" />
-  <link rel="icon" type="image/png" href="../imgs/snake_logo.png" />
-  <title>Red Envelopes</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
-  <link rel="stylesheet" href="../css/envelopeCss/envelope.css">
-  <link rel="stylesheet" href="../css/envelopeCss/scoreboard.css">
-</head>
+  <body>
+    <audio id="clap" src="../audio/crowd_clap.mp3"></audio>
+    <audio id="sad" src="../audio/Sad Meow.mp3"></audio>
+    <audio id="nit" src="../audio/Cai_Nit.mp3"></audio>
 
-<body>
-  <audio id="clap" src="../audio/crowd_clap.mp3"></audio>
-  <audio id="sad" src="../audio/Sad Meow.mp3"></audio>
-  <audio id="nit" src="../audio/Cai_Nit.mp3"></audio>
-
-  <div class="container-fluid mt-3">
-    <div class="row">
-      <div class="col-12">
-        <button onclick="goBack()" class="btn btn-secondary mb-3">⬅️ Back</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-9 col-12">
-        <div class="container py-5">
-          <h1 class="text-center mb-4">Lucky Money</h1>
-          <div id="envelopeContainer" class="row row-cols-1 row-cols-md-3 g-4">
-            <!-- Envelopes will be dynamically added here -->
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-12">
-        <div id="scoreboardContainer" class="scoreboard-container">
-          <h3>Scoreboard</h3>
-          <table id="scoreboard" class="scoreboard-table">
-            <thead>
-              <tr>
-                <th>User Name</th>
-                <th>Reward</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- Scoreboard rows will be dynamically added here -->
-            </tbody>
-          </table>
-          <div id="pagination" class="pagination">
-            <!-- Pagination controls will be dynamically added here -->
-          </div>
+    <div class="container-fluid mt-3">
+      <div class="row">
+        <div class="col-12">
+          <button onclick="goBack()" class="btn btn-secondary mb-3">
+            ⬅️ Back
+          </button>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="modal fade" id="envelopeModal" tabindex="-1" aria-labelledby="envelopeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <!-- Modal Body -->
-        <div class="modal-header">
-          <h5 class="modal-title" id="envelopeModalLabel">Congratulations!</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <!-- Money Image -->
-          <div class="money-image-container text-center">
-            <img src="" alt="Reward Image" id="modalImage" class="money-image img-fluid" />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-9 col-12">
+          <div class="container py-5">
+            <h1 class="text-center mb-4">Lì Xì</h1>
+            <div
+              id="envelopeContainer"
+              class="row row-cols-1 row-cols-md-3 g-4"
+            >
+              <!-- Envelopes will be dynamically added here -->
+            </div>
           </div>
-          <!-- Reward Text -->
-          <h2 id="modalMessage" class="reward-text text-center mt-3">You found 500K VND!</h2>
-          <!-- Form -->
-          <form class="score-form mt-4" id="scoreForm">
-            <div class="mb-3">
-              <label for="name" class="form-label">Your Name</label>
-              <input 
-                type="text" 
-                id="name" 
-                name="name" 
-                placeholder="Enter your name" 
-                class="form-control" 
-                required 
+        </div>
+        <div class="col-md-3 col-12">
+          <div id="scoreboardContainer" class="scoreboard-container">
+            <h3>Thành tích</h3>
+            <table id="scoreboard" class="scoreboard-table">
+              <thead>
+                <tr>
+                  <th>Tài khoản</th>
+                  <th>Phần thưởng</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Scoreboard rows will be dynamically added here -->
+              </tbody>
+            </table>
+            <div id="pagination" class="pagination">
+              <!-- Pagination controls will be dynamically added here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="envelopeModal"
+      tabindex="-1"
+      aria-labelledby="envelopeModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <!-- Modal Body -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="envelopeModalLabel">Chúc mừng!</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <!-- Money Image -->
+            <div class="money-image-container text-center">
+              <img
+                src=""
+                alt="Reward Image"
+                id="modalImage"
+                class="money-image img-fluid"
               />
             </div>
-            <button type="submit" class="btn btn-primary w-100">Submit Score</button>
-          </form>
+            <!-- Reward Text -->
+            <h2 id="modalMessage" class="reward-text text-center mt-3">
+              Bạn nhân được 500K VND!
+            </h2>
+            <!-- Form -->
+            <form class="score-form mt-4" id="scoreForm">
+              <div class="mb-3">
+                <label for="name" class="form-label">Tên bạn là gì</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Nhập ở đây"
+                  class="form-control"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary w-100">
+                Nhập điểm
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  
-  <canvas class="confetti-canvas" id="confettiCanvas"></canvas>
 
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../js/envelopeJs/envelope.js"></script>
-  <script src="../js/envelopeJs/score.js"></script>
-  <script>
-    function goBack() {
-      window.history.back();
-    }
-  </script>
+    <canvas class="confetti-canvas" id="confettiCanvas"></canvas>
 
-</body>
-
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/envelopeJs/envelope.js"></script>
+    <script src="../js/envelopeJs/score.js"></script>
+    <script>
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+  </body>
 </html>
