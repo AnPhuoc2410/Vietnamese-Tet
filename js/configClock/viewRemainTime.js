@@ -3,7 +3,7 @@
 /*----------------------danh sách số từ 0-9 cho từng view phần tử thời gian sao cho đúng nhất------*/
 /**************************************************************************************************/
 var viewRemainTime = function(){
-    this.objRemainTime = new remainTime(2025, 1, 28, 00, 00, 00, 000);    this.remainTime = []; // Chứa mảng các thành phần thời gian trong thời gian còn lại
+    this.objRemainTime = new remainTime(2025, 1, 29, 00, 00, 00, 000);    this.remainTime = []; // Chứa mảng các thành phần thời gian trong thời gian còn lại
     this.listNumberOfViewElementTime = []; // Mảng các danh sách số từ 0-9 trong các view hiển thị phần tử thời gian
     this.viewElementTime = document.getElementsByClassName("element-time"); // Mảng chứa các view phần từ thời gian
     this.elementTime = []; // Mảng lưu từng phần tử thời gian
