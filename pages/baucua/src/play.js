@@ -25,6 +25,53 @@ const player = {
   },
 };
 
+// Add countdown overlay to HTML
+const countdownOverlay = document.createElement("div");
+countdownOverlay.innerHTML = `
+  <div id="countdown-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-red-800 p-8 rounded-lg text-center">
+      <div id="countdown" class="text-6xl font-bold text-yellow-500 mb-4">3</div>
+      <div class="text-white text-xl">Đang lắc xúc xắc...</div>
+    </div>
+  </div>
+`;
+document.body.appendChild(countdownOverlay);
+
+function startCountdown() {
+  const overlay = document.getElementById("countdown-overlay");
+  const countdownEl = document.getElementById("countdown");
+  let count = 3;
+
+  overlay.classList.remove("hidden");
+
+  const countdownInterval = setInterval(() => {
+    count--;
+    countdownEl.textContent = count;
+
+    if (count === 0) {
+      clearInterval(countdownInterval);
+      setTimeout(() => {
+        overlay.classList.add("hidden");
+        revealResults();
+      }, 1000);
+    }
+  }, 1000);
+}
+
+function revealResults() {
+  const rollResults = ["", "", ""].map(rollDice);
+  rollResults.forEach(function (animal, i) {
+    const diceEl = document.getElementById("dice-" + i);
+    diceEl.src = "./assets/" + animal + ".jpg";
+    win(animal);
+  });
+  rollResults.forEach(function (animal) {
+    player.bets[animal] = "";
+  });
+  lose();
+  display();
+}
+
 display();
 
 const playForm = document.getElementById("play-form");
@@ -37,18 +84,7 @@ playForm.addEventListener("change", function (event) {
 
 playForm.addEventListener("submit", function (event) {
   event.preventDefault();
-
-  const rollResults = ["", "", ""].map(rollDice);
-  rollResults.forEach(function (animal, i) {
-    const diceEl = document.getElementById("dice-" + i);
-    diceEl.src = "./assets/" + animal + ".jpg";
-    win(animal);
-  });
-  rollResults.forEach(function (animal) {
-    player.bets[animal] = "";
-  });
-  lose();
-  display();
+  startCountdown(); // Start countdown instead of immediately showing results
 });
 
 const saveButton = document.getElementById("save-button");
