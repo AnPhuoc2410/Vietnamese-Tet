@@ -8,19 +8,31 @@
       href="https://fonts.googleapis.com/css?family=Fahkwang"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
   </head>
-  <body>
-    <header>
-      <h1>Bầu Cua Tôm Cá</h1>
+  <body
+    class="bg-gradient-to-b from-yellow-400 to-red-500 min-h-screen font-[Fahkwang] text-center flex flex-col items-center justify-center text-white"
+  >
+    <header class="mb-8">
+      <h1 class="text-4xl text-black font-bold tracking-widest uppercase">
+        Bầu Cua Tôm Cá
+      </h1>
     </header>
-    <main>
-      <section id="player-container">
+    <main class="space-y-4">
+      <section id="player-container" class="flex flex-col space-y-4">
         <a href="./new-player.html">
-          <button>New Player</button>
+          <button
+            class="btn bg-yellow-500 text-white py-3 px-6 rounded-full shadow-lg hover:bg-yellow-600 transition-transform transform hover:scale-105"
+          >
+            New Player
+          </button>
         </a>
         <a href="./returning-player.html">
-          <button>Returning Player</button>
+          <button
+            class="bg-orange-500 text-white py-3 px-6 rounded-full shadow-lg hover:bg-orange-600 transition-transform transform hover:scale-105"
+          >
+            Returning Player
+          </button>
         </a>
       </section>
     </main>
