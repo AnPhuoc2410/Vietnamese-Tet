@@ -16,8 +16,8 @@ body {
 }
 
 .h2 {
-  margin-bottom: 30px;
-  font-size: 70px;
+  padding: 1rem;
+  font-size: 65px;
   font-family: "Shrikhand", cursive;
   text-align: center;
   line-height: 100%;
