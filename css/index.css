@@ -245,7 +245,9 @@ body {
   background-color: #a93132; /* Green background */
   color: white; /* White text */
   padding: 10px 20px; /* Spacing inside the button */
-  font-size: 16px; /* Font size */
+  width: 13rem;
+  font-weight: bold;
+  font-size: 1.5rem; /* Font size */
   border: none; /* No border */
   border-radius: 5px; /* Rounded corners */
   cursor: pointer; /* Pointer cursor on hover */
@@ -277,6 +279,8 @@ body {
   padding: 10px 20px; /* Padding inside each button */
   width: 100%; /* Make the button fill the container */
   border: none; /* Remove border */
+  font-weight: bold;
+  font-size: 1rem;
   text-align: left; /* Align text to the left */
   cursor: pointer; /* Pointer cursor on hover */
   transition: background-color 0.3s ease;
