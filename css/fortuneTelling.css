@@ -50,7 +50,7 @@ body {
 
 #info {
   padding: 21px 20px;
-  height: 300px;
+  min-height: 300px;
   background-image: url("../imgs/que.png");
   background-size: cover;
   width: 20%;
@@ -128,6 +128,100 @@ body {
   border: 2px solid #ffa6a6;
   box-shadow: 0px 0px 10px #ffffff;
   background: -webkit-linear-gradient(#ff5959, #fd4040);
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .container {
+    width: 90%;
+    margin: 10% auto;
+  }
+
+  .h2 {
+    font-size: 60px;
+  }
+
+  .description {
+    font-size: 24px;
+  }
+
+  .number {
+    font-size: 40px;
+  }
+
+  #info {
+    width: 50%;
+    max-width: 200px;
+    min-height: 300px;
+  }
+
+  .revealBtn,
+  .backBtn {
+    font-size: 25px;
+    padding: 8px 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    margin: 8% auto;
+  }
+
+  .h2 {
+    font-size: 50px;
+  }
+
+  .description {
+    font-size: 20px;
+  }
+
+  .number {
+    font-size: 35px;
+  }
+
+  #info {
+    width: 40%;
+    max-width: 240px;
+    min-height: 360px;
+  }
+
+  .revealBtn,
+  .backBtn {
+    font-size: 20px;
+    padding: 6px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    margin: 5% auto;
+  }
+
+  .h2 {
+    font-size: 40px;
+  }
+
+  .description {
+    font-size: 18px;
+  }
+
+  .number {
+    font-size: 30px;
+  }
+
+  #info {
+    width: 50%;
+    min-width: 200px;
+    min-height: 310px;
+  }
+
+  .revealBtn,
+  .backBtn {
+    font-size: 18px;
+    padding: 5px 20px;
+  }
 }
 
 .backBtn:hover {
