@@ -4,68 +4,93 @@ const envelopes = [
     message: "Bạn nhận được 500000 Đồng!",
     audio: "../audio/crowd_clap.mp3",
     reward: 500000,
+    weight: 0.1,
   },
   {
     img: "../imgs/money/200k.jpg",
     message: "Bạn nhận được 200000 Đồng!",
     audio: "../audio/crowd_clap.mp3",
     reward: 200000,
+    weight: 0.5,
   },
   {
     img: "../imgs/money/100k.jpg",
     message: "Bạn nhận được 100000 Đồng!",
     audio: "../audio/crowd_clap.mp3",
     reward: 100000,
+    weight: 1,
   },
   {
     img: "../imgs/money/50k.jpg",
     message: "Bạn nhận được 50000 Đồng!",
     audio: "../audio/crowd_clap.mp3",
     reward: 50000,
+    weight: 4,
   },
   {
     img: "../imgs/money/20k.jpg",
     message: "Bạn nhận được 20000 Đồng!",
     audio: "../audio/crowd_clap.mp3",
     reward: 20000,
+    weight: 5,
   },
   {
     img: "../imgs/money/10k.jpg",
     message: "Bạn nhận được 10000 Đồng!",
     audio: "../audio/crowd_clap.mp3",
     reward: 10000,
+    weight: 6,
   },
   {
     img: "../imgs/money/5k.jpg",
     message: "Bạn nhận được 5000 Đồng!",
     audio: "../audio/Sad Meow.mp3",
     reward: 5000,
+    weight: 7,
   },
   {
     img: "../imgs/money/2k.jpg",
     message: "Bạn nhận được 2000 Đồng!",
     audio: "../audio/Sad Meow.mp3",
     reward: 2000,
+    weight: 8,
   },
   {
     img: "../imgs/money/1k.jpg",
     message: "Bạn nhận được 1000 Đồng!",
     audio: "../audio/Sad Meow.mp3",
     reward: 1000,
+    weight: 9,
   },
   {
     img: "../imgs/money/5d.jpg",
     message: "Bạn nhận được 500 VNĐ!",
     audio: "../audio/Sad Meow.mp3",
     reward: 500,
+    weight: 10, // Highest chance
   },
   {
     img: "../imgs/money/nit.jpg",
     message: "Còn cái Nịt!",
     audio: "../audio/Cai_Nit.mp3",
     reward: 0,
+    weight: 10, // Highest chance
   },
 ];
+
+function getWeightedRandom(items) {
+  const totalWeight = items.reduce((sum, item) => sum + item.weight, 0);
+  const random = Math.random() * totalWeight;
+
+  let cumulativeWeight = 0;
+  for (const item of items) {
+    cumulativeWeight += item.weight;
+    if (random < cumulativeWeight) {
+      return item;
+    }
+  }
+}
+
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -79,9 +104,16 @@ function generateEnvelopes() {
   const container = document.getElementById("envelopeContainer");
   container.innerHTML = "";
 
-  const shuffledEnvelopes = shuffleArray([...envelopes]).slice(0, 6);
+  // Generate 6 random envelopes based on weights
+  const selectedEnvelopes = [];
+  while (selectedEnvelopes.length < 6) {
+    const envelope = getWeightedRandom(envelopes);
+    if (!selectedEnvelopes.includes(envelope)) {
+      selectedEnvelopes.push(envelope);
+    }
+  }
 
-  shuffledEnvelopes.forEach((envelope, index) => {
+  selectedEnvelopes.forEach((envelope, index) => {
     const col = document.createElement("div");
     col.className = "col-md-4 col-lg-4 d-flex justify-content-center";
 
@@ -95,8 +127,9 @@ function generateEnvelopes() {
     container.appendChild(col);
   });
 
-  window.shuffledEnvelopes = shuffledEnvelopes;
+  window.shuffledEnvelopes = selectedEnvelopes;
 }
+
 
 function disableEnvelopes() {
   const envelopeElements = document.querySelectorAll(".envelope-card img");
