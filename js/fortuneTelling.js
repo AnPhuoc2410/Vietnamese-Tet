@@ -135,7 +135,7 @@ $(document).ready(function () {
 
   // Play page load sound
   pageLoadSound.play();
-
+  pageLoadSound.volume = 0.2;
   $("#reveal").click(function () {
     if (hasSpun) return;
     hasSpun = true;
@@ -144,7 +144,6 @@ $(document).ready(function () {
 
     // Play spin sound
     spinSound.play();
-
     setTimeout(() => {
       el.classList.remove("shake");
 
