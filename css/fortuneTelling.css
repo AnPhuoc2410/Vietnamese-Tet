@@ -86,9 +86,9 @@ body {
   font-size: 30px;
   color: white;
   border-radius: 10px;
-  border: 2px solid #6e0dd0;
-  box-shadow: 0px 0px 10px #142585;
-  background: -webkit-linear-gradient(#6441a5, #2a0845);
+  border: 2px solid #ffa6a6;
+  box-shadow: 0px 0px 10px #ffffff;
+  background: -webkit-linear-gradient(#ff5959, #fd4040);
 }
 
 .revealBtn:hover {
@@ -100,7 +100,7 @@ body {
 }
 
 .revealBtn:active {
-  background: linear-gradient(#8657de, #4f0f82);
+  background: linear-gradient(#ff5959, #fd4040);
   transform: translateY(3px);
 }
 
@@ -110,12 +110,37 @@ body {
 }
 
 .revealBtn:hover {
-  background-color: #6a1b9a;
+  background-color: #fd4040;
 }
 
 .revealBtn:disabled {
   background-color: #9e9e9e;
   cursor: not-allowed;
+}
+.backBtn {
+  padding: 10px 34px;
+  font-family: "Anton", sans-serif;
+  text-align: center;
+  letter-spacing: 5px;
+  font-size: 30px;
+  color: white;
+  border-radius: 10px;
+  border: 2px solid #ffa6a6;
+  box-shadow: 0px 0px 10px #ffffff;
+  background: -webkit-linear-gradient(#ff5959, #fd4040);
+}
+
+.backBtn:hover {
+  cursor: pointer;
+}
+
+.backBtn:focus {
+  outline: 0;
+}
+
+.backBtn:active {
+  background: linear-gradient(#ff5959, #fd4040);
+  transform: translateY(3px);
 }
 
 .popup {

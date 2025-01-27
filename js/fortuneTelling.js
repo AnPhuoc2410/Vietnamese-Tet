@@ -127,14 +127,30 @@ $(document).ready(function () {
   const popupNumber = document.getElementById("popup-number");
   const popupQuote = document.getElementById("popup-quote");
   const closePopup = document.getElementById("close-popup");
+  const pageLoadSound = document.getElementById("page-load-sound");
+  const spinSound = document.getElementById("spin-sound");
+  const popupSound = document.getElementById("popup-sound");
+  const backBtn = document.getElementById("back");
   let hasSpun = false;
+
+  // Play page load sound
+  pageLoadSound.play();
+
   $("#reveal").click(function () {
     if (hasSpun) return;
     hasSpun = true;
     $(this).prop("disabled", true);
     el.classList.add("shake");
+
+    // Play spin sound
+    spinSound.play();
+
     setTimeout(() => {
       el.classList.remove("shake");
+
+      // Stop spin sound
+      spinSound.pause();
+      spinSound.currentTime = 0;
 
       randomIndex = Math.floor(Math.random() * quotes.length);
       const finalNumber = randomIndex + 1;
@@ -143,11 +159,19 @@ $(document).ready(function () {
       popupQuote.textContent = quotes[randomIndex].quote;
       popup.classList.remove("hidden");
 
+      // Play popup sound
+      popupSound.play();
+
       $(this).prop("disabled", true);
     }, 5000);
   });
 
   closePopup.addEventListener("click", () => {
     popup.classList.add("hidden");
+  });
+
+  // Add event listener for back button
+  backBtn.addEventListener("click", () => {
+    window.history.back();
   });
 });
