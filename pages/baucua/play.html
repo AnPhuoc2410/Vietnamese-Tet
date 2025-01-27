@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bau Cua</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Fahkwang"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-red-800 text-gold font-sans">
+    <header class="bg-amber-700 p-5">
+      <h1 class="text-4xl font-bold text-center">
+        <a href="/" class="hover:text-yellow-500">Bầu Cua</a>
+      </h1>
+      <section class="mt-4 text-center">
+        <h3 class="text-xl">Name: <span id="player-name-display"></span></h3>
+        <h3 class="text-xl">
+          Current: $<span id="current-money-display"></span>
+        </h3>
+        <h3 class="text-xl">
+          Total in bet: $<span id="total-bet-display"></span>
+        </h3>
+      </section>
+    </header>
+
+    <main class="mt-8 p-5">
+      <form id="play-form" class="flex flex-col items-center space-y-6">
+        <section
+          id="play-mat"
+          class="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-3"
+        >
+          <!-- Bet sections with images -->
+          <label class="flex flex-col items-center">
+            <div class="w-28 h-28">
+              <img
+                src="./assets/deer.jpg"
+                class="object-cover w-full h-full rounded-lg"
+              />
+            </div>
+            <span class="text-lg font-semibold mt-2">Đặt cho Deer</span>
+            <input
+              type="number"
+              name="bet"
+              id="deer-bet"
+              class="mt-2 p-2 border-2 rounded-lg text-gray-800"
+            />
+          </label>
+
+          <label class="flex flex-col items-center">
+            <div class="w-28 h-28">
+              <img
+                src="./assets/gourd.jpg"
+                class="object-cover w-full h-full rounded-lg"
+              />
+            </div>
+            <span class="text-lg font-semibold mt-2">Đặt cho Gourd</span>
+            <input
+              type="number"
+              name="bet"
+              id="gourd-bet"
+              class="mt-2 p-2 border-2 rounded-lg text-gray-800"
+            />
+          </label>
+
+          <label class="flex flex-col items-center">
+            <div class="w-28 h-28">
+              <img
+                src="./assets/chicken.jpg"
+                class="object-cover w-full h-full rounded-lg"
+              />
+            </div>
+            <span class="text-lg font-semibold mt-2">Đặt cho Chicken</span>
+            <input
+              type="number"
+              name="bet"
+              id="chicken-bet"
+              class="mt-2 p-2 border-2 rounded-lg text-gray-800"
+            />
+          </label>
+
+          <label class="flex flex-col items-center">
+            <div class="w-28 h-28">
+              <img
+                src="./assets/fish.jpg"
+                class="object-cover w-full h-full rounded-lg"
+              />
+            </div>
+            <span class="text-lg font-semibold mt-2">Đặt cho Fish</span>
+            <input
+              type="number"
+              name="bet"
+              id="fish-bet"
+              class="mt-2 p-2 border-2 rounded-lg text-gray-800"
+            />
+          </label>
+
+          <label class="flex flex-col items-center">
+            <div class="w-28 h-28">
+              <img
+                src="./assets/crab.jpg"
+                class="object-cover w-full h-full rounded-lg"
+              />
+            </div>
+            <span class="text-lg font-semibold mt-2">Đặt cho Crab</span>
+            <input
+              type="number"
+              name="bet"
+              id="crab-bet"
+              class="mt-2 p-2 border-2 rounded-lg text-gray-800"
+            />
+          </label>
+
+          <label class="flex flex-col items-center">
+            <div class="w-28 h-28">
+              <img
+                src="./assets/shrimp.jpg"
+                class="object-cover w-full h-full rounded-lg"
+              />
+            </div>
+            <span class="text-lg font-semibold mt-2">Đặt cho Shrimp</span>
+            <input
+              type="number"
+              name="bet"
+              id="shrimp-bet"
+              class="mt-2 p-2 border-2 rounded-lg text-gray-800"
+            />
+          </label>
+        </section>
+
+        <button
+          class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-700"
+        >
+          Reveal!
+        </button>
+      </form>
+
+      <section class="mt-8 text-center">
+        <p class="text-lg font-semibold">Kết quả:</p>
+        <div class="flex justify-center space-x-4 mt-4">
+          <img
+            id="dice-0"
+            class="reveal-dice w-16 h-16 object-cover rounded-lg"
+          />
+          <img
+            id="dice-1"
+            class="reveal-dice w-16 h-16 object-cover rounded-lg"
+          />
+          <img
+            id="dice-2"
+            class="reveal-dice w-16 h-16 object-cover rounded-lg"
+          />
+        </div>
+      </section>
+    </main>
+
+    <footer class="mt-10 text-center">
+      <button
+        id="save-button"
+        class="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600"
+      >
+        Lưu và Thoát
+      </button>
+    </footer>
+
+    <script type="module" src="./src/play.js"></script>
+  </body>
+</html>

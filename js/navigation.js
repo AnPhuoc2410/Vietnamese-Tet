@@ -28,3 +28,7 @@ document.getElementById("settingsOption").addEventListener("click", () => {
 document.getElementById("fireWork").addEventListener("click", () => {
   window.location.href = "pages/fireWork.html"; // Redirect to the Fire Work page
 });
+
+document.getElementById("baucua").addEventListener("click", () => {
+  window.location.href = "pages/baucua/baucua.html";
+});
