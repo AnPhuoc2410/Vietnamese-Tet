@@ -8,23 +8,41 @@
       href="https://fonts.googleapis.com/css?family=Fahkwang"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
   </head>
-  <body>
-    <header>
-      <h1>Bầu Cua Tôm Cá</h1>
+  <body
+    class="bg-red-900 text-gold min-h-screen font-[Fahkwang] flex flex-col items-center justify-center"
+  >
+    <header class="bg-orange-600 p-6 w-1/4 text-center rounded-lg shadow-lg">
+      <h1 class="text-3xl font-bold">Bầu Cua Tôm Cá</h1>
     </header>
-    <main>
-      <form id="profile-form">
-        <label>
-          Name:
-          <input type="text" name="name" placeholder="Enter name" required />
+    <main class="mt-8 bg-orange-500 p-6 w-1/3 rounded-lg shadow-lg">
+      <form id="profile-form" class="space-y-4">
+        <label class="block">
+          <span class="block text-lg mb-2">Tên:</span>
+          <input
+            type="text"
+            name="name"
+            placeholder="Nhập tên của bạn"
+            required
+            class="w-full p-2 rounded-lg text-black"
+          />
         </label>
-        <label>
-          Starting amount of money:
-          <input type="number" name="start-money" placeholder="$" required />
+        <label class="block">
+          <span class="block text-lg mb-2">Tiền vốn khởi đầu:</span>
+          <input
+            type="number"
+            name="start-money"
+            placeholder="100000 VND"
+            required
+            class="w-full p-2 rounded-lg text-black"
+          />
         </label>
-        <button>Let's Play</button>
+        <button
+          class="bg-yellow-500 text-black px-6 py-3 rounded-lg shadow-lg hover:bg-yellow-600 w-full"
+        >
+          Bắt đầu chơi ngay
+        </button>
       </form>
     </main>
     <script type="module" src="./src/new-player.js"></script>
