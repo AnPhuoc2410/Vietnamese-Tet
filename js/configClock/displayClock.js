@@ -1,40 +1,51 @@
-function displayClock(){
-    this.clock = document.getElementsByClassName("clock")[0]; // Khung của clock
-    this.elementTime = document.getElementsByClassName("element-time"); // Các đối tượng element-time dùng để hiển thị phần tử time
-    this.timeName = document.querySelectorAll(".clock .viewTime .time-remain > p"); // Tên của các thành phần thời gian
-    this.haiCham = document.querySelectorAll(".clock .viewTime .hai-cham > p"); // Dấu hai chấm
-    this.i = 0; // Biến trung gian
-    this.j = 0; // Biến trung gian
+class DisplayClock extends displayAll {
+    constructor() {
+        super(); // Kế thừa các phương thức từ DisplayAll
+        this.clock = document.getElementsByClassName("clock")[0]; // Khung của clock
+        this.elementTime = document.getElementsByClassName("element-time"); // Các phần tử thời gian
+        this.timeName = document.querySelectorAll(".clock .viewTime .time-remain > p"); // Tên thời gian
+        this.colonElements = document.querySelectorAll(".clock .viewTime .hai-cham > p"); // Dấu hai chấm ":"
+    }
 
     // Hiển thị khung clock
-    this.displayContainClock = function(){
-        setTimeout(()=>{
-            // this.clock.style.opacity = "1";
-            this.clock.style.width = "50%";
-            this.clock.style.transition = "1s";
-            setTimeout(()=>{
-                this.clock.style.height = "220px";
-            }, 300);
-        }, 500);
-    };
+    async displayContainClock() {
+        await this.delay(500);
+        this.clock.style.width = "50%";
+        this.clock.style.transition = "1s";
+
+        await this.delay(300);
+        this.clock.style.height = "220px";
+    }
+
     // Hiển thị các phần tử thời gian
-    this.displayElementTime = function(){
+    displayElementTime() {
         this.display(800, 100, 1, this.elementTime, "top", 0, "px");
-    };
-    // Hiển thị name time
-    this.displayTimeName = function(){
+    }
+
+    // Hiển thị tên các phần tử thời gian
+    displayTimeName() {
         this.display(1000, 200, 1, this.timeName, "top", -30, "%");
-    };
+    }
+
     // Hiển thị dấu hai chấm ":"
-    this.displayHaiCham = function(){
-        this.display(1000, 200, 1, this.haiCham, "top", 0, "%");
-    };
+    displayColonElements() {
+        this.display(1000, 200, 1, this.colonElements, "top", 0, "%");
+    }
+
+    // Hàm delay tiện ích
+    delay(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    // Khởi chạy toàn bộ
+    async start() {
+        await this.displayContainClock();
+        this.displayElementTime();
+        this.displayTimeName();
+        this.displayColonElements();
+    }
 }
 
-displayClock.prototype = new displayAll(); // Kế thừa hàm khởi tạo displayAll để sử dụng phương thức display
-// Khởi chạy các hàm
-var displayClock = new displayClock();
-displayClock.displayContainClock();
-displayClock.displayElementTime();
-displayClock.displayTimeName();
-displayClock.displayHaiCham();
+// Khởi tạo và khởi chạy đồng hồ
+const displayClock = new DisplayClock();
+displayClock.start();

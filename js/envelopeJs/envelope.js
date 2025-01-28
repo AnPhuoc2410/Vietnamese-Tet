@@ -174,6 +174,7 @@ function openEnvelope(index) {
 
   if (envelopeData.audio) {
     const audio = new Audio(envelopeData.audio);
+    audio.volume = 0.8;
     audio.play().catch((err) => console.error("Audio playback failed:", err));
   }
 

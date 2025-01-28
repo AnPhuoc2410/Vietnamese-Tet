@@ -1,9 +1,49 @@
-/*****************************************************************************************************/
-/*----------------------Chịu trách nhiệm chính là cập nhật thời gian rồi thay đổi hiển thị----------*/
-/*----------------------danh sách số từ 0-9 cho từng view phần tử thời gian sao cho đúng nhất------*/
 /**************************************************************************************************/
 var viewRemainTime = function(){
-    this.objRemainTime = new remainTime(2025, 1, 29, 00, 00, 00, 000);    this.remainTime = []; // Chứa mảng các thành phần thời gian trong thời gian còn lại
+    // Function to calculate the next Tet date
+    this.getNextTetDate = function() {
+        const currentDate = new Date();
+        const currentYear = currentDate.getFullYear();
+        
+        // Predefined list of Tet dates for the next few years
+        const tetDates = {
+            2023: new Date(2023, 0, 22, 0, 0, 0, 0), 
+            2024: new Date(2024, 1, 10, 0, 0, 0, 0),
+             //8 Năm đón tết 29 Âm lịch
+            2025: new Date(2025, 0, 29, 0, 0, 0, 0), 
+            2026: new Date(2026, 0, 29, 0, 0, 0, 0), 
+            2027: new Date(2027, 0, 29, 0, 0, 0, 0), 
+            2028: new Date(2028, 0, 29, 0, 0, 0, 0), 
+            2029: new Date(2029, 0, 29, 0, 0, 0, 0), 
+            2030: new Date(2030, 0, 29, 0, 0, 0, 0), 
+            2031: new Date(2031, 0, 29, 0, 0, 0, 0), 
+            2032: new Date(2032, 0, 29, 0, 0, 0, 0), 
+            
+        };
+
+        const tetDateThisYear = tetDates[currentYear];
+        const tetDateNextYear = tetDates[currentYear + 1];
+
+        // If the current date is past Tet this year, return Tet for next year
+        if (currentDate > tetDateThisYear) {
+            return tetDateNextYear;
+        } else {
+            return tetDateThisYear;
+        }
+    };
+
+    const nextTetDate = this.getNextTetDate();
+    this.objRemainTime = new remainTime(
+        nextTetDate.getFullYear(),
+        nextTetDate.getMonth() + 1,
+        nextTetDate.getDate(),
+        nextTetDate.getHours(),
+        nextTetDate.getMinutes(),
+        nextTetDate.getSeconds(),
+        nextTetDate.getMilliseconds()
+    );
+
+    this.remainTime = []; // Chứa mảng các thành phần thời gian trong thời gian còn lại
     this.listNumberOfViewElementTime = []; // Mảng các danh sách số từ 0-9 trong các view hiển thị phần tử thời gian
     this.viewElementTime = document.getElementsByClassName("element-time"); // Mảng chứa các view phần từ thời gian
     this.elementTime = []; // Mảng lưu từng phần tử thời gian
